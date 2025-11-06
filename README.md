@@ -23,20 +23,27 @@ Este projeto é um jogo 2D desenvolvido na IDE Greenfoot como trabalho prático 
 Esta é a **Primeira Entrega** do trabalho, que foca na implementação da primeira fase do jogo.
 
 **Requisitos de Jogabilidade (J4.x) implementados:**
-* **[J4.1]** Tela inicial com nome e instruções.
-* **[J4.2]** Mundo da primeira fase.
-* **[J4.4]** Ator controlado pelo jogador.
-* **[J4.5]** Pelo menos dois tipos de inimigos.
-* **[J4.6]** Pelo menos um tipo de item coletável.
-* **[J4.7]** Pelo menos um tipo de obstáculo.
-* **[J4.8]** Sistema de pontuação visível.
-* **[J4.9, J4.10]** Sons de efeito (3+) e som de fundo (1+).
+* **[J4.1]** Deve existir um mundo, que podemos chamar de tela inicial, que mostra o nome do jogo e instruções de como jogar.
+* **[J4.2]** Deve existir um mundo que é a primeira fase do jogo.
+* **[J4.3]** Deve ser possível terminar o jogo com vitória ou derrota e isso deve ser informado de alguma forma para o jogador.
+* **[J4.4]** Deve existir um ator que é controlado pelo jogador.
+* **[J4.5]** Devem existir pelo menos dois tipos de atores que representam inimigos que precisem ser atacados ou evitados. Eles devem ter comportamentos diferentes (ex.: movimentação aleatória, perseguição ao jogador, andar por caminho predefinido, podem atacar o jogador à distância, etc.)
+* **[J4.6]** Deve existir pelo menos um tipo de ator que representa um item que o jogador poderá coletar no jogo (pode ser um item que dê pontos ou que seja útil para o avanço do jogo, como chaves, vidas extras, teletransportadores, etc.).
+* **[J4.7]** Deve existir pelo menos um tipo de ator que representa um obstáculo para o jogador (pode ser, por exemplo, uma parede, uma pedra, uma armadilha, etc).
+* **[J4.8]** Deve existir alguma forma de pontuação e deve ser possível que o jogador vença o jogo com diferentes pontuações. A pontuação deve aparecer na tela do jogo durante toda a partida.
+* **[J4.9]** O jogo deve ter sons de efeitos sonoros e deve usar, pelo menos, três arquivos de áudio diferentes.
+* **[J4.10]** O jogo deve ter som de fundo (pelo menos um).
 
 **Requisitos de Implementação (I4.x) aplicados:**
-* **[I4.1 - I4.5]** Uso correto de conceitos de OO (Classes, Encapsulamento, Abstração, baixo acoplamento, alta coesão).
-* **[I4.6]** Código legível e comentado.
-* **[I4.7]** Implementado com Greenfoot 3.9.0.
-* **[I4.9]** Sem uso de programação funcional (lambdas, streams).
+* **[I4.1]** O trabalho deve usar corretamente os conceitos de classes, objetos e encapsulamento.
+* **[I4.2]** O trabalho deve usar corretamente os conceitos de abstração e modularização.
+* **[I4.3]** O trabalho deve usar corretamente os conceitos de atributos, variáveis locais e parâmetros.
+* **[I4.4]** O trabalho deve usar corretamente os conceitos de atributos e métodos estáticos.
+* **[I4.5]** O trabalho deve ser implementado com bom design de classes: baixo acoplamento, alta coesão (não ter replicação de código), com design baseado em responsabilidade e sem acoplamento implícito.
+* **[I4.6]** O código deve estar legível, organizado e comentado.
+* **[I4.7]** A implementação deve, necessariamente, utilizar o Greenfoot versão 3.9.0 (veja ANEXO A2).
+* **[I4.8]** O código entregue deve estar compilando. Caso ocorram erros de compilação, o trabalho não será corrigido e a nota será zero.
+* **[I4.9]** Não é permitido o uso de funções lambda e técnicas de programação funcional da linguagem Java (ex.:, operador ->, lista.forEach(...), stream(), filter(), etc.).
 
 ---
 
