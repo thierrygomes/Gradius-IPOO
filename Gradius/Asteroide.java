@@ -5,6 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
  * Move-se junto com o cenário e não pode ser destruído por tiros.
  * A NaveJogador morre se colidir com ele.
  */
+//teste
 public class Asteroide extends Actor
 {
     // Esta velocidade DEVE ser a mesma da 'rolarFundo()' na Fase1
