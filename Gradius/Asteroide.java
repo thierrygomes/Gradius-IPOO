@@ -6,6 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
  * A NaveJogador morre se colidir com ele.
  */
 //teste
+//TESTE
 public class Asteroide extends Actor
 {
     // Esta velocidade DEVE ser a mesma da 'rolarFundo()' na Fase1
