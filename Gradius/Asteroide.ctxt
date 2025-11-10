@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Asteroide
+comment0.text=\r\n\ Obst\u00E1culo\ (Requisito\ J4.7).\r\n\ Move-se\ junto\ com\ o\ cen\u00E1rio\ e\ n\u00E3o\ pode\ ser\ destru\u00EDdo\ por\ tiros.\r\n\ A\ NaveJogador\ morre\ se\ colidir\ com\ ele.\r\n
+comment1.params=
+comment1.target=Asteroide()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moverComCenario()
+comment3.text=\r\n\ Move\ o\ asteroide\ para\ a\ esquerda\ na\ velocidade\ do\ cen\u00E1rio.\r\n
+comment4.params=
+comment4.target=void\ verificarRemocao()
+comment4.text=\r\n\ Verifica\ se\ o\ asteroide\ saiu\ pela\ borda\ esquerda\ e\ o\ remove.\r\n
+numComments=5

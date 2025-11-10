@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Tiro
+comment0.text=\r\n\ Representa\ o\ tiro\ disparado\ pela\ NaveJogador.\r\n
+comment1.params=
+comment1.target=Tiro()
+comment1.text=\r\n\ Construtor\ da\ classe\ Tiro.\r\n\ Define\ a\ imagem\ do\ tiro.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ M\u00E9todo\ act\ -\ chamado\ a\ cada\ "ato"\ do\ Greenfoot.\r\n
+comment3.params=
+comment3.target=void\ moverParaDireita()
+comment3.text=\r\n\ Move\ o\ tiro\ para\ a\ direita.\r\n
+comment4.params=
+comment4.target=void\ verificarColisaoInimigo()
+comment4.text=\r\n\ Verifica\ se\ este\ tiro\ atingiu\ um\ Inimigo.\r\n\ ATUALIZADO\ para\ acertar\ inimigos\ e\ dropar\ PowerUps.\r\n
+comment5.params=
+comment5.target=void\ verificarRemocao()
+comment5.text=\r\n\ Verifica\ se\ o\ tiro\ saiu\ pela\ borda\ direita\ e\ o\ remove.\r\n
+numComments=6

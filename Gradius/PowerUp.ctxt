@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=PowerUp
+comment0.text=\r\n\ Item\ colet\u00E1vel\ (Requisito\ J4.6).\r\n\ D\u00E1\ pontos\ extras\ ao\ jogador\ quando\ coletado.\r\n
+comment1.params=
+comment1.target=PowerUp()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moverComCenario()
+comment3.text=\r\n\ Move\ o\ item\ para\ a\ esquerda\ na\ velocidade\ do\ cen\u00E1rio.\r\n
+comment4.params=
+comment4.target=void\ verificarRemocao()
+comment4.text=\r\n\ Verifica\ se\ o\ item\ saiu\ pela\ borda\ esquerda\ e\ o\ remove.\r\n
+numComments=5

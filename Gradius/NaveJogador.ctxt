@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=NaveJogador
+comment0.text=\r\n\ A\ Nave\ do\ Jogador.\ (Requisito\ J4.4)\r\n\ Controlada\ pelo\ usu\u00E1rio\ para\ mover\ e\ atirar.\r\n
+comment1.params=
+comment1.target=NaveJogador()
+comment1.text=\r\n\ Construtor\ da\ NaveJogador.\r\n\ Define\ a\ imagem\ da\ nave.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ verificarMovimento()
+comment3.text=\r\n\ Controla\ o\ movimento\ da\ nave\ baseado\ nas\ setas\ do\ teclado.\r\n
+comment4.params=
+comment4.target=void\ verificarDisparo()
+comment4.text=\r\n\ Verifica\ se\ a\ tecla\ "espa\u00E7o"\ foi\ pressionada\ para\ atirar.\r\n
+comment5.params=
+comment5.target=void\ verificarColisoes()
+comment5.text=\r\n\ Verifica\ colis\u00F5es\ com\ inimigos\ ou\ obst\u00E1culos\ (Requisitos\ J4.5\ e\ J4.7).\r\n\ Se\ colidir,\ o\ jogo\ acaba\ (Requisito\ J4.3).\r\n\ ATUALIZADO\ para\ usar\ o\ m\u00E9todo\ 'encerrarJogo()'\ do\ Mundo.\r\n
+comment6.params=
+comment6.target=void\ verificarColetaPowerUp()
+comment6.text=\r\n\ Verifica\ se\ a\ nave\ coletou\ um\ PowerUp\ (Requisito\ J4.6).\r\n
+numComments=7

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=TelaInicial
+comment0.text=\r\n\ A\ Tela\ Inicial\ do\ jogo.\r\n\ Mostra\ o\ nome\ do\ jogo\ e\ as\ instru\u00E7\u00F5es,\ conforme\ requisito\ J4.1.\r\n
+comment1.params=
+comment1.target=TelaInicial()
+comment2.params=
+comment2.target=void\ prepararTela()
+comment2.text=\r\n\ Prepara\ os\ textos\ da\ tela\ inicial.\r\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ O\ m\u00E9todo\ act()\ da\ TelaInicial\ verifica\ se\ o\ jogador\r\n\ pressionou\ "enter"\ para\ come\u00E7ar\ o\ jogo.\r\n
+numComments=4
