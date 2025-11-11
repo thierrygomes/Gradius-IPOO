@@ -86,7 +86,7 @@ public class NaveJogador extends Actor
         if (inimigo != null || asteroide != null)
         {
             // Toca o som de explosão (Requisito J4.9)
-            Greenfoot.playSound("som_explosao_jogador.wav");
+            Greenfoot.playSound("som_explosao_jogador.mp3");
 
             // Pega o mundo
             Fase1 mundo = (Fase1) getWorld();
@@ -112,7 +112,7 @@ public class NaveJogador extends Actor
         if (powerUp != null)
         {
             // Toca um som de coleta
-            Greenfoot.playSound("som_coleta.wav"); // Você precisa adicionar este som
+            Greenfoot.playSound("som_coleta.mp3"); // Você precisa adicionar este som
 
             // Pede ao mundo para adicionar mais pontos
             Fase1 mundo = (Fase1) getWorld();
