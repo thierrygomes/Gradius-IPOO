@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
+    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
 
 /**
  * A Nave do Jogador. (Requisito J4.4)
@@ -10,6 +10,7 @@ public class NaveJogador extends Actor
      * Construtor da NaveJogador.
      * Define a imagem da nave.
      */
+  
     public NaveJogador()
     {
         // Carrega a imagem da nave (coloque 'nave.png' na pasta 'images')
@@ -60,11 +61,12 @@ public class NaveJogador extends Actor
         if (Greenfoot.isKeyDown("space"))
         {
             // Toca o som do tiro (Requisito J4.9)
-            Greenfoot.playSound("som_tiro.wav"); 
+            Greenfoot.playSound("som_tiro.mp3"); 
 
             // Cria um novo ator 'Tiro' na posição da nave
             Tiro tiro = new Tiro();
-            getWorld().addObject(tiro, getX() + 50, getY()); // +50 para sair da frente da nave
+            getWorld().addObject(tiro, getX() + 50, getY());
+            // +50 para sair da frente da nave
         }
     }
 

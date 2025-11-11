@@ -57,7 +57,7 @@ public class Tiro extends Actor
             int y = inimigo.getY();
 
             // Toca o som de explosão
-            Greenfoot.playSound("som_explosao_inimigo.wav");
+            Greenfoot.playSound("som_explosao_inimigo.mp3");
 
             // Pede ao mundo para adicionar pontos
             Fase1 mundo = (Fase1) getWorld();
