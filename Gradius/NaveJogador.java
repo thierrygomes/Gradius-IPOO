@@ -1,81 +1,96 @@
-    import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
 
 /**
- * A Nave do Jogador. (Requisito J4.4)
- * Controlada pelo usuário para mover e atirar.
+ * A Nave do Jogador.
+ * ATUALIZADO: Agora atira por clique, não por segurar.
  */
 public class NaveJogador extends Actor
 {
-    /**
-     * Construtor da NaveJogador.
-     * Define a imagem da nave.
-     */
-  
+    // NÃO precisamos mais das variáveis de cooldown
+    
     public NaveJogador()
     {
-        // Carrega a imagem da nave (coloque 'nave.png' na pasta 'images')
         setImage("nave.png");
     }
 
     public void act()
+{
+
+    
+    // 1. Pega o mundo
+    Fase1 mundo = (Fase1) getWorld();
+    
+    // 2. Se o mundo não existir (ator foi removido) 
+    //    OU se o jogo não estiver mais ativo (vitória ou game over)...
+    if (mundo == null || !mundo.isJogoAtivo())
     {
-        // 1. Verifica se o jogador apertou teclas de movimento
-        verificarMovimento();
-
-        // 2. Verifica se o jogador atirou
-        verificarDisparo();
-
-        // 3. Verifica se o jogador colidiu com algo
-        verificarColisoes();
-
-        // 4. (NOVO) Verifica se o jogador coletou um item
-        verificarColetaPowerUp();
+        // ...então a nave não faz absolutamente NADA.
+        return; 
     }
 
+    // Verifica se morreu
+    if (verificarColisoes()) {
+        return; 
+    }
+
+    // Se não morreu, faz o resto
+    verificarMovimento();
+    verificarDisparo();
+    verificarColetaPowerUp();
+}
     /**
-     * Controla o movimento da nave baseado nas setas do teclado.
+     * Controla o movimento da nave (com a correção das bordas)
      */
     private void verificarMovimento()
     {
-        int velocidade = 5; // Você pode ajustar este valor
+        int velocidade = 5; 
+        int mundoLargura = getWorld().getWidth();
+        int mundoAltura = getWorld().getHeight();
+        int x = getX();
+        int y = getY();
 
-        if (Greenfoot.isKeyDown("up")) {
-            setLocation(getX(), getY() - velocidade);
+        if (Greenfoot.isKeyDown("up") && y > 0) {
+            setLocation(x, y - velocidade);
         }
-        if (Greenfoot.isKeyDown("down")) {
-            setLocation(getX(), getY() + velocidade);
+        if (Greenfoot.isKeyDown("down") && y < mundoAltura - 1) { 
+            setLocation(x, y + velocidade);
         }
-        if (Greenfoot.isKeyDown("left")) {
-            setLocation(getX() - velocidade, getY());
+        if (Greenfoot.isKeyDown("left") && x > 0) {
+            setLocation(x - velocidade, y);
         }
-        if (Greenfoot.isKeyDown("right")) {
-            setLocation(getX() + velocidade, getY());
+        if (Greenfoot.isKeyDown("right") && x < mundoLargura - 1) {
+            setLocation(x + velocidade, y);
         }
     }
 
     /**
      * Verifica se a tecla "espaço" foi pressionada para atirar.
+     * ATUALIZADO: Agora usa Greenfoot.getKey() para atirar 
+     * apenas UMA VEZ por clique.
      */
     private void verificarDisparo()
     {
-        if (Greenfoot.isKeyDown("space"))
+        // --- MUDANÇA PRINCIPAL AQUI ---
+        
+        // Greenfoot.getKey() só retorna "space" no exato momento
+        // em que a tecla é pressionada.
+        if ("space".equals(Greenfoot.getKey()))
         {
-            // Toca o som do tiro (Requisito J4.9)
+            // Toca o som do tiro
             Greenfoot.playSound("som_tiro.mp3"); 
 
-            // Cria um novo ator 'Tiro' na posição da nave
+            // Cria o tiro
             Tiro tiro = new Tiro();
             getWorld().addObject(tiro, getX() + 50, getY());
-            // +50 para sair da frente da nave
+            
+            // NÃO precisamos mais reiniciar o cooldown
         }
     }
 
     /**
-     * Verifica colisões com inimigos ou obstáculos (Requisitos J4.5 e J4.7).
-     * Se colidir, o jogo acaba (Requisito J4.3).
-     * ATUALIZADO para usar o método 'encerrarJogo()' do Mundo.
+     * Verifica colisões com inimigos ou obstáculos
      */
-    private void verificarColisoes()
+    private boolean verificarColisoes() 
     {
         Actor inimigo = getOneIntersectingObject(InimigoReto.class);
         if (inimigo == null) {
@@ -85,40 +100,27 @@ public class NaveJogador extends Actor
 
         if (inimigo != null || asteroide != null)
         {
-            // Toca o som de explosão (Requisito J4.9)
             Greenfoot.playSound("som_explosao_jogador.mp3");
-
-            // Pega o mundo
             Fase1 mundo = (Fase1) getWorld();
-
-            // Informa a derrota (J4.3)
             mundo.addObject(new GameOver(), mundo.getWidth() / 2, mundo.getHeight() / 2);
-
-            // Pede ao mundo para encerrar o jogo
             mundo.encerrarJogo();
-
-            // Remove a nave do mundo
             getWorld().removeObject(this);
+            return true; 
         }
+        return false; 
     }
 
     /**
-     * Verifica se a nave coletou um PowerUp (Requisito J4.6).
+     * Verifica se a nave coletou um PowerUp
      */
     private void verificarColetaPowerUp()
     {
         Actor powerUp = getOneIntersectingObject(PowerUp.class);
-
         if (powerUp != null)
         {
-            // Toca um som de coleta
-            Greenfoot.playSound("som_coleta.mp3"); // Você precisa adicionar este som
-
-            // Pede ao mundo para adicionar mais pontos
+            Greenfoot.playSound("som_coleta.mp3");
             Fase1 mundo = (Fase1) getWorld();
-            mundo.adicionarPontos(50); // Bônus de 50 pontos
-
-            // Remove o item do mundo
+            mundo.adicionarPontos(50); 
             getWorld().removeObject(powerUp);
         }
     }
