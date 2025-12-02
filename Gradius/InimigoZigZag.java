@@ -1,57 +1,33 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
+import greenfoot.*;
 
-/**
- * Inimigo 2 (Requisito J4.5).
- * Move-se da direita para a esquerda em padrão ZigZag.
- * Tem um comportamento diferente do InimigoReto.
- */
-public class InimigoZigZag extends Actor
+public class InimigoZigZag extends Inimigo 
 {
-    private int velocidadeX = 4; // Velocidade para a esquerda
-    private int velocidadeY = 2; // Velocidade para cima/baixo
-    private int direcaoY = 1;    // 1 para baixo, -1 para cima
-    
+    private int velocidadeX = 4;
+    private int velocidadeY = 2;
+    private int direcaoY = 1;
     private int contadorMovimento = 0;
-    private int limiteMovimento = 40; // Quantos "atos" anda em uma direção
+    private int limiteMovimento = 40;
 
     public InimigoZigZag()
     {
-        setImage("inimigo2.png"); // Use uma imagem DIFERENTE do InimigoReto
+        setImage("inimigo2.png");
         getImage().mirrorHorizontally();
     }
     
     public void act()
     {
         moverZigZag();
-        verificarRemocao();
+        super.verificarRemocao(); // Usa a lógica da superclasse
     }
     
-    /**
-     * Move o inimigo para a esquerda e para cima/baixo.
-     */
     private void moverZigZag()
     {
         setLocation(getX() - velocidadeX, getY() + (velocidadeY * direcaoY));
-        
         contadorMovimento++;
-        
-        // Se atingiu o limite de movimento, inverte a direção Y
         if (contadorMovimento >= limiteMovimento)
         {
-            direcaoY = direcaoY * -1; // Inverte (de 1 para -1, ou -1 para 1)
-            contadorMovimento = 0;   // Reseta o contador
-        }
-    }
-    
-    /**
-     * Verifica se o inimigo saiu pela borda esquerda e o remove.
-     * (Este código é IDÊNTICO ao do InimigoReto)
-     */
-    private void verificarRemocao()
-    {
-        if (getX() <= 0)
-        {
-            getWorld().removeObject(this);
+            direcaoY = direcaoY * -1;
+            contadorMovimento = 0;
         }
     }
 }

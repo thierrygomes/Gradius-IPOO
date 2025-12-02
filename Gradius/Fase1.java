@@ -15,7 +15,7 @@ public class Fase1 extends World
     private int xFundoA;
     private int xFundoB;
 
-    private static final int PONTUACAO_VITORIA = 200; // Meta de pontos para vencer
+    private static final int PONTUACAO_VITORIA = 100; // Meta de pontos para vencer
     private boolean jogoAtivo = true; // Flag para controlar se o jogo está rodando
 
     public Fase1()
@@ -45,19 +45,20 @@ public class Fase1 extends World
 
     public void act()
     {
-        // Se o jogo não está ativo (ganhou ou perdeu), não faz mais nada.
-        if (!jogoAtivo) {
-            return; 
+
+        if (jogoAtivo) 
+        {
+            // Se o jogo está ativo, faz as coisas normais
+            rolarFundo();
+            spawnarAtores();
+            verificarVitoria();
         }
-        
-        // 1. Lógica do fundo rolando
-        rolarFundo();
-        
-        // 2. Lógica para criar atores
-        spawnarAtores(); // Use o nome do método que criamos
-        
-        // 3. (NOVO) Verifica se o jogador venceu
-        verificarVitoria();
+        else
+        {
+            // Se o jogo NÃO está ativo (Game Over), 
+            // fica verificando se o jogador quer reiniciar
+            verificarRestart();
+        }
     }
 
     /**
@@ -113,6 +114,24 @@ public class Fase1 extends World
             int y = Greenfoot.getRandomNumber(getHeight());
             addObject(ast, getWidth() - 10, y);
         }
+
+        // --- NOVO: Chance de Lixo Espacial (J5.6) ---
+        // Gira e mata igual Asteroide, mas é visualmente diferente
+        if (Greenfoot.getRandomNumber(1000) < 5) 
+        {
+            LixoEspacial lixo = new LixoEspacial();
+            int y = Greenfoot.getRandomNumber(getHeight());
+            addObject(lixo, getWidth() - 10, y);
+        }
+
+        // 0.3% de chance de criar um Inimigo Atirador (Mais raro)
+        // Isso atende o requisito J5.4 (Mais um tipo de inimigo)
+        if (Greenfoot.getRandomNumber(1000) < 3) 
+        {
+            InimigoAtirador atirador = new InimigoAtirador();
+            int y = Greenfoot.getRandomNumber(getHeight());
+            addObject(atirador, getWidth() - 10, y);
+        }
     }
 
     /**
@@ -147,23 +166,70 @@ public class Fase1 extends World
      */
     private void verificarVitoria()
     {
+        // Se atingiu a pontuação necessária...
         if (pontuacao >= PONTUACAO_VITORIA)
         {
-            // Informa a vitória (J4.3)
-            addObject(new Vitoria(), getWidth() / 2, getHeight() / 2);
+            // 1. Para a música da Fase 1 (Muito importante!)
+            pararMusica();
 
-            // Encerra o jogo
-            encerrarJogo();
+            // 2. Remove textos de vitória antigos se houver
+            showText("", getWidth() / 2, getHeight() / 2);
+
+            // 3. Manda o jogador para a Fase 2
+            // Passamos a 'pontuacao' atual para ela não zerar!
+            Greenfoot.setWorld(new TelaTransicao(pontuacao));
         }
     }
 
     /**
+     * Retorna a pontuação atual.
+     * Usado pela NaveJogador para informar o GameOver.
+     */
+    public int getPontuacao()
+    {
+        return pontuacao;
+    }
+
+    /**
      * Método centralizado para parar o jogo (música, spawns, etc.)
+     * ATUALIZADO: Agora não usa Greenfoot.stop() e pede o restart.
      */
     public void encerrarJogo()
     {
         this.jogoAtivo = false;
         pararMusica();
-        Greenfoot.stop();
+
+        // Mostra a pontuação final (como fizemos antes)
+        String textoFinal = "Pontuação Final: " + pontuacao;
+        showText(textoFinal, getWidth() / 2, (getHeight() / 2) + 60);
+
+        // Mostra o texto para reiniciar
+        showText("Aperte ENTER para reiniciar", getWidth() / 2, (getHeight() / 2) + 100);
+
+    }
+
+    /**
+     * Permite que outros atores (como a Nave) saibam se o jogo
+     * ainda está rodando.
+     */
+    public boolean isJogoAtivo()
+    {
+        return this.jogoAtivo;
+    }
+
+    /**
+     * Verifica se o jogador apertou ENTER após o Game Over
+     * para reiniciar o jogo.
+     */
+    private void verificarRestart()
+    {
+        if (Greenfoot.isKeyDown("enter"))
+        {
+            // Para a música antiga (caso esteja tocando algo)
+            pararMusica(); 
+
+            // Cria um NOVO mundo da Fase1, começando tudo do zero
+            Greenfoot.setWorld(new Fase1());
+        }
     }
 }

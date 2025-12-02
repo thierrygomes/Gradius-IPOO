@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Fase3
+comment1.params=pontuacaoAnterior
+comment1.target=Fase3(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=boolean\ isJogoAtivo()
+comment4.params=valor
+comment4.target=void\ adicionarPontos(int)
+comment5.params=
+comment5.target=void\ encerrarJogo()
+comment6.params=
+comment6.target=void\ vitoriaFinal()
+comment6.text=\r\n\ Chamado\ pelo\ Chef\u00E3o\ quando\ ele\ morre.\r\n\ ATUALIZADO\:\ Usa\ ArrayList\ para\ gerar\ o\ relat\u00F3rio\ final\ (Requisito\ I5.1).\r\n
+numComments=7

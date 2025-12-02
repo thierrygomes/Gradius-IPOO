@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.target=Tiro
+comment0.target=InimigoAtirador
 comment1.params=
-comment1.target=Tiro()
+comment1.target=InimigoAtirador()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ verificarColisaoInimigo()
+comment3.target=void\ atirar()
 numComments=4

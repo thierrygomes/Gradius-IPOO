@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Inimigo
+comment0.text=\r\n\ Superclasse\ para\ todos\ os\ inimigos.\r\n\ Atende\ ao\ Requisito\ I5.2\ (Heran\u00E7a).\r\n
+comment1.params=
+comment1.target=void\ verificarRemocao()
+comment1.text=\r\n\ Todo\ inimigo\ precisa\ verificar\ se\ saiu\ da\ tela.\r\n\ Como\ isso\ \u00E9\ igual\ para\ todos,\ fica\ na\ superclasse\ (Reutiliza\u00E7\u00E3o\ de\ c\u00F3digo).\r\n
+numComments=2

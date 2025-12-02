@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=LixoEspacial
+comment0.text=\r\n\ Novo\ Obst\u00E1culo\ (Requisito\ J5.6).\r\n\ Herda\ de\ Asteroide,\ ent\u00E3o\ a\ Nave\ morre\ se\ bater\ nele\ automaticamente.\r\n
+comment1.params=
+comment1.target=LixoEspacial()
+comment2.params=
+comment2.target=void\ act()
+numComments=3

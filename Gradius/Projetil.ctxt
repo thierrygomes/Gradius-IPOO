@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Projetil
+comment0.text=\r\n\ Superclasse\ para\ todos\ os\ tiros\ do\ jogo.\r\n\ Conta\ como\ a\ 2\u00AA\ Superclasse\ obrigat\u00F3ria\ (Requisito\ I5.2).\r\n
+comment1.params=velocidade
+comment1.target=Projetil(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ verificarRemocao()
+comment3.text=\r\n\ Remove\ o\ proj\u00E9til\ se\ ele\ sair\ da\ tela.\r\n
+numComments=4

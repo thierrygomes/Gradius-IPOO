@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Fase2
+comment1.params=pontuacaoInicial
+comment1.target=Fase2(int)
+comment1.text=\r\n\ Construtor\ da\ Fase\ 2.\r\n\ Recebe\ a\ pontua\u00E7\u00E3o\ da\ Fase\ 1\ como\ par\u00E2metro\!\r\n
+comment10.params=
+comment10.target=void\ verificarVitoria()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ rolarFundo()
+comment4.params=
+comment4.target=void\ spawnarAtoresDificeis()
+comment4.text=\r\n\ Spawn\ mais\ agressivo\ para\ a\ Fase\ 2\r\n
+comment5.params=valor
+comment5.target=void\ adicionarPontos(int)
+comment6.params=
+comment6.target=void\ atualizarPontuacao()
+comment7.params=
+comment7.target=void\ pararMusica()
+comment8.params=
+comment8.target=boolean\ isJogoAtivo()
+comment9.params=
+comment9.target=void\ encerrarJogo()
+numComments=11

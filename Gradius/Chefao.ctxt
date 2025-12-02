@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Chefao
+comment1.params=
+comment1.target=Chefao()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ moverVerticalmente()
+comment4.params=
+comment4.target=void\ atirar()
+comment5.params=
+comment5.target=void\ tomarDano()
+comment5.text=\r\n\ M\u00E9todo\ especial\ para\ o\ Chef\u00E3o\ levar\ dano.\r\n\ CORRIGIDO\:\ Evita\ o\ erro\ de\ NullPointerException.\r\n
+numComments=6

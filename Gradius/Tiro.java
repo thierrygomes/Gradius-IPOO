@@ -1,94 +1,72 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot)
 
-/**
- * Representa o tiro disparado pela NaveJogador.
- */
-public class Tiro extends Actor
+public class Tiro extends Projetil
 {
-    /**
-     * Construtor da classe Tiro.
-     * Define a imagem do tiro.
-     */
     public Tiro()
     {
-        setImage("tiro.png"); // Crie uma imagem de tiro (ex: um pequeno laser)
+        super(10); // Velocidade 10
+        setImage("tiro.png");
     }
 
-    /**
-     * Método act - chamado a cada "ato" do Greenfoot.
-     */
     public void act()
     {
-        // 1. Move o tiro
-        moverParaDireita();
-
-        // 2. Verifica se acertou um inimigo
-        verificarColisaoInimigo();
-
-        // 3. Verifica se o tiro saiu da tela
-        verificarRemocao();
+        super.act(); // Projetil move e verifica se saiu da tela
+        
+        // Só verifica colisão se o tiro ainda existir
+        if (getWorld() != null) {
+            verificarColisaoInimigo();
+        }
     }
 
-    /**
-     * Move o tiro para a direita.
-     */
-    private void moverParaDireita()
-    {
-        int velocidade = 10;
-        setLocation(getX() + velocidade, getY());
-    }
-
-    /**
-     * Verifica se este tiro atingiu um Inimigo.
-     * ATUALIZADO para acertar inimigos e dropar PowerUps.
-     */
     private void verificarColisaoInimigo()
     {
-        Actor inimigo = getOneIntersectingObject(InimigoReto.class);
-
-        if (inimigo == null) {
-            inimigo = getOneIntersectingObject(InimigoZigZag.class);
-        }
+        Actor inimigo = getOneIntersectingObject(Inimigo.class);
 
         if (inimigo != null)
         {
-            // Pega a posição do inimigo ANTES de removê-lo
+            // Salva o mundo antes de remover qualquer coisa
+            World mundo = getWorld(); 
             int x = inimigo.getX();
             int y = inimigo.getY();
 
-            // Toca o som de explosão
-            Greenfoot.playSound("som_explosao_inimigo.wav");
-
-            // Pede ao mundo para adicionar pontos
-            Fase1 mundo = (Fase1) getWorld();
-            mundo.adicionarPontos(10); 
-
-            // Remove o inimigo e o tiro
-            getWorld().removeObject(inimigo);
-            getWorld().removeObject(this); // Remove o tiro
-
-            // --- NOVIDADE AQUI (Requisito J4.6) ---
-            // 20% de chance de dropar um PowerUp
-            if (Greenfoot.getRandomNumber(100) < 20) 
+            Greenfoot.playSound("som_explosao_inimigo.mp3");
+            // --- LÓGICA DO CHEFÃO ---
+            if (inimigo instanceof Chefao)
             {
-                PowerUp powerUp = new PowerUp();
-                // Adiciona o PowerUp onde o inimigo estava
-                mundo.addObject(powerUp, x, y); 
+                // Se for o Chefão, ele só toma dano, não morre direto
+                ((Chefao) inimigo).tomarDano();
+                
+                // O tiro some
+                mundo.removeObject(this);
+                return; // Sai do método para não executar o resto (drop de itens, etc)
             }
-            // ----------------------------------------
-        }
-    }
+            // ------------------------
 
-    /**
-     * Verifica se o tiro saiu pela borda direita e o remove.
-     */
-    private void verificarRemocao()
-    {
-        // 'getWorld()' pode ser nulo se o tiro acabou de ser removido (após colisão)
-        // Por isso, verificamos se 'getWorld() != null' antes de usá-lo.
-        if (getWorld() != null && getX() >= getWorld().getWidth() - 1)
-        {
-            getWorld().removeObject(this);
+            // --- CORREÇÃO AQUI: Verifica a Fase para dar pontos ---
+            if (mundo instanceof Fase1) {
+                ((Fase1) mundo).adicionarPontos(10);
+            } 
+            else if (mundo instanceof Fase2) {
+                // Na fase 2, inimigos podem valer mais pontos se quiser
+                ((Fase2) mundo).adicionarPontos(20); 
+            }
+            // -----------------------------------------------------
+
+            mundo.removeObject(inimigo);
+            mundo.removeObject(this); 
+
+            // Lógica de Drop de Itens (igual fizemos antes)
+            int sorteio = Greenfoot.getRandomNumber(100); 
+
+            if (sorteio < 15) { // 15% Moeda
+                mundo.addObject(new Moeda(), x, y); 
+            }
+            else if (sorteio >= 15 && sorteio < 20) { // 5% PowerUp
+                mundo.addObject(new PowerUp(), x, y); 
+            }
+            else if (sorteio >= 20 && sorteio < 22) { // 2% Cristal
+                mundo.addObject(new Cristal(), x, y);
+            }
         }
     }
 }

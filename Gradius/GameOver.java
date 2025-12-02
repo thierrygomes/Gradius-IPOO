@@ -12,5 +12,5 @@ public class GameOver extends Actor
         setImage("game_over.png");
     }
     
-    // NENHUM método act() é necessário.
+ 
 }

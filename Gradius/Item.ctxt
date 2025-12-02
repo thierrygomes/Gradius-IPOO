@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\r\n\ Superclasse\ Item.\r\n\ Serve\ apenas\ para\ mover\ os\ itens\ e\ remov\u00EA-los\ da\ tela.\r\n\ Atende\ ao\ Requisito\ de\ Heran\u00E7a\ (I5.2)\ sem\ complica\u00E7\u00F5es.\r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2
